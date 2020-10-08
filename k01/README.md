@@ -1,5 +1,5 @@
 # 課題1 レポート
-学籍番号　氏名
+学籍番号 35319030　氏名 西薗洸成
 
 
 ## 課題
@@ -61,6 +61,36 @@ typedef struct {
 
 
 ## ソースコードの説明
+68: result1=-1とおく
+
+69:pos1を定義
+
+71:for文を使って、（size）回だけ繰り返す
+
+72-74: arrayCityに含まれるidとkeyが一致したときresult1にpos1を代入し、繰り返しを終了する
+
+77: result1、つまりIDが合致した配列データのindexを出力
+
+84: result2=-1とおく
+
+85:pop2を定義
+
+86:left=0とおく
+
+87:MAX_CITY,つまり21-1=20をrightに代入
+
+88:left<=rightである間は繰り返す
+
+89:pos2にleft + (right - left) / 2 を代入
+
+90-93:arrayCityに含まれるidとkeyが一致したときresult2にpos2を代入し、繰り返しを終了する
+
+94-95:keyがarrayCityに含まれるidより大きい場合、leftにpos2 + 1を代入
+
+96-99:keyがarrayCityに含まれるidより小さい、または等しい場合、rightにpos2 - 1を代入
+
+100:result2、つまりIDが合致した配列データのindexを出力
+
 
 
 
@@ -68,8 +98,22 @@ typedef struct {
 ## 出力結果
 
 ```
+===== linear search =====
+City ID?42214
+42214, 長崎県, 南島原市, 46535, 21574, 24961
+
+===== binary search =====
+City ID?42214
+42214, 長崎県, 南島原市, 46535, 21574, 24961
 
 ```
+===== linear search =====
+City ID?10000
+city was not found
+
+===== binary search =====
+City ID?10000
+city was not found
 
 ## 修正履歴
 
