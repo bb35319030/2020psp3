@@ -17,7 +17,6 @@ typedef struct node_data {
     City city;
     struct node_data* pNext;
 } Node;
-
 #define DEBUG
 //#define CHALLENGE1
 //#define CHALLENGE2
