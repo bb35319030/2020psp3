@@ -75,7 +75,12 @@ Force Search. Find keyword at:wind in my hair.
 BM Search. Find keyword at:wind in my hair.
 
 ## 修正履歴
-61:key_index = key_len; key_index>0; としていたものをkey_index=key_len-1; key_index >= 0;に変更
+1回目の修正
+61:key_index = key_len; key_index>0; としていたものをkey_index=key_len-1;key_index >= 0;に変更
 65:key_index == 1としていたものをkey_index == 0に変更
 81:key_index == 1としていたものをkey_index == 0に変更
 
+２回目の修正
+61:index_bf=indexをwhile文の直後にもってくる
+70:比較開始位置をずらす量は、不一致であった探索対象文字で決まるので、 table[(int)key[key_index]]をtable[(int)text[index]]に変更
+75:keyとtextが不一致の場合、for文の繰り返しを抜けるためbreakをいれる
