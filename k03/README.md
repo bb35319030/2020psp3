@@ -75,4 +75,7 @@ Force Search. Find keyword at:wind in my hair.
 BM Search. Find keyword at:wind in my hair.
 
 ## 修正履歴
+61:key_index = key_len; key_index>0; としていたものをkey_index=key_len-1; key_index >= 0;に変更
+65:key_index == 1としていたものをkey_index == 0に変更
+81:key_index == 1としていたものをkey_index == 0に変更
 
