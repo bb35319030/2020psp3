@@ -98,6 +98,37 @@ int AdjacencyMatrix[MAX_STATIONS][MAX_STATIONS] = {
 
 ## ソースコードの説明
 
+114-116:visit[size],i,indexを宣言
+
+118-119:visitedをすべて０にする（すべて行ったことがないことにする）
+
+122:stackを初期化する
+
+123:出発点をpushする
+
+125:スタックから取り出すものがなくなるまで繰り返す
+
+126:stackから取り出して（pop）、indexに代入する
+
+127-139:行ったことがない場合、行ったことにして、その場所から行ける場所を確認する。その場所から行ける場所をstackに入れる。
+
+140-144:行ったことがある場所を確認して、行ったことがある場合"駅のindex = visited"と出力する
+
+208-210:visit[size],i,indexを宣言
+
+211-213:visitedをすべて０にする（すべて行ったことがないことにする）
+
+214:queueを初期化する
+
+215:出発点をEnqueueする
+
+216:queueから取り出すものがなくなるまで繰り返す
+
+217:queueから取り出して（dequeue）、indexに代入する
+
+218-228:行ったことがない場合、行ったことにして、その場所から行ける場所を確認する。その場所から行ける場所をqueueに入れる。
+
+230-232:行ったことがある場所を確認して、行ったことがある場合"駅のindex = visited"と出力する
 
 
 ## 出力結果
@@ -105,6 +136,23 @@ int AdjacencyMatrix[MAX_STATIONS][MAX_STATIONS] = {
 ```
 
 ```
+0 is visited
+1 is visited
+2 is visited
+3 is visited
+4 is visited
+5 is visited
+6 is visited
+7 is visited
+0 is visited
+1 is visited
+2 is visited
+3 is visited
+4 is visited
+5 is visited
+6 is visited
+7 is visited
+Time Required: 8
 
 ## 修正履歴
 

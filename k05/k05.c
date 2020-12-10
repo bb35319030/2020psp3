@@ -11,6 +11,8 @@ typedef struct tagStation {
     char kanji[16];
 } Station;
 
+
+
 #define MAX_STATIONS 8
 Station ArrayStation[MAX_STATIONS] = {
     {"akasako", "赤迫"},
@@ -53,6 +55,8 @@ Item ErrorItem = -1;
 #define STACK_SIZE  10
 Item Stack[STACK_SIZE];
 int SP;
+
+
 
 void StackInit(void)
 {
@@ -105,11 +109,40 @@ int StackIsEmpty(void)
 
 void DepthFirstSearch(int size, int matrix[size][size], int start)
 {
+    
     //  ここを実装する
+    int visited[size];
+    int i;
+    int index;
 
+     for(i = 0; i < MAX_STATIONS; i++) {
+        visited[i]=UNVISITED;
+    }
+
+    StackInit();
+    StackPush(start);
+
+    while (StackIsEmpty()== FALSE) {
+        index=StackPop();
+        if (visited[index]==UNVISITED) {
+
+            visited[index]=VISITED;
+
+            for(i=0; i<MAX_STATIONS; i++){
+                if(matrix[index][i]!=UNVISITED){
+                    StackPush(i);
+                }
+            }
+
+        }
+        
+    }
+    for(i=0;i<MAX_STATIONS;i++){
+        if(visited[i]==VISITED){
+        printf("%d is visited\n",i);
+        }
+    }
 }
-
-
 
 #define QUEUE_MAX   10
 Item Queue[QUEUE_MAX];
@@ -172,6 +205,34 @@ int QueueIsEmpty()
 void BreadthFirstSearch(int size, int matrix[size][size], int start)
 {
     //  ここを実装する
+    int visited[size];
+    int i;
+    int index;
+for(i = 0; i < MAX_STATIONS; i++) {
+        visited[i]=UNVISITED;
+    }
+InitQueue;
+EnQueue(start);
+while (QueueIsEmpty()== FALSE) {
+    index = DeQueue();
+    if (visited[index]==UNVISITED) {
+         visited[index]=VISITED;
+
+         for(i=0; i<MAX_STATIONS; i++){
+                if(matrix[index][i]!=UNVISITED){
+                    EnQueue(i);
+                }
+            }
+           
+        }
+    }
+
+for(i=0;i<MAX_STATIONS;i++){
+    if(visited[i]==VISITED){
+        printf("%d is visited\n",i);
+        }
+
+    }
 
 }
 
@@ -184,8 +245,6 @@ int SearchGraphByDijkstra(int start, int goal, int size, int matrix[size][size])
 
 }
 
-
-
 int main(void)
 {
     int cost;
@@ -195,6 +254,5 @@ int main(void)
 
     cost = SearchGraphByDijkstra(0, 7, MAX_STATIONS, AdjacencyMatrix);
     printf("Time Required: %d\n", cost);
-
     return 0;
 }
